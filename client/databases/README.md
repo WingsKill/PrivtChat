@@ -10,10 +10,10 @@
 | email          | CHAR(50)  | NOT NULL UNIQUE | "bob@exemple.com"      |
 | created_at     | TIMESTAMP | NOT NULL        | 2022-11-11 17:54:04    |
 | chat_list      | CHAR(500) |                 | "EBAENnbj78UAJlfoep78" |
+
 /!\ chat_list "EBAENnbj78UAJlfoep78" :
 * chat_id_1 = "EBAENnbj78"
 * chat_id_2 = "UAJlfoep78"
-<br/>
 <br/>
 
 | **FRIEND_REQUEST** | type                       | constraints | exemple                |
@@ -37,10 +37,10 @@
 |  chat_id   | CHAR(10)  | UNIQUE NOT NULL | "ABCD123456"           |
 | user_list  | CHAR(500) | NOT NULL        | "123456789A987654321Z" |
 | created_at | TIMESTAMP | NOT NULL        | 2022-11-11 18:28:06    |
+
 /!\ user_list "123456789A987654321Z" :
 * user_id_1 = "123456789A"
 * user_id_2 = "987654321Z"
-<br/>
 <br/>
 
 | **CHAT_ID** | type        | constraints | exemple             |
