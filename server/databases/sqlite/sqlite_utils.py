@@ -20,7 +20,7 @@ def create_db_customers():
         CONSTRAINT CK_customers_id_length check (length(id) = 10),
         CONSTRAINT CK_customers_username_length check (length(username) > 3),
         CONSTRAINT CK_customers_hased_password_length check (LENGTH(hased_password) > 5),
-        CONSTRAINT CK_customers_chat_list_lenght CHECK (LENGTH(chat_list) < 500)
+        CONSTRAINT CK_customers_chat_list_lenght CHECK (LENGTH(chat_list) <= 500)
         );
     """)
 
@@ -46,3 +46,23 @@ def create_db_customers():
         );
     """)
 
+
+def create_db_messages():
+    if os.path.isfile("messages.sqlite"):
+        raise FileExistsError
+
+    messages = sqlite3.connect("messages.sqlite")
+    messages_cursor = messages.cursor()
+
+    messages_cursor.execute("""
+    CREATE TABLE 'index' (
+        chat_id CHAR(10) UNIQUE NOT NULL,
+        user_list CHAR(500) NOT NULL,
+        created_at TIMESTAMP NOT NULL,
+        CONSTRAINT CK_chat_id_length CHECK (LENGTH(chat_id) = 10),
+        CONSTRAINT CK_user_list_max CHECK (LENGTH(user_list) <= 500)
+        );
+    """)
+
+create_db_customers()
+create_db_messages()
